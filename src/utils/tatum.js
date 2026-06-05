@@ -1,6 +1,6 @@
 const API =
   process.env.REACT_APP_API_URL ||
-  "http://localhost:3001";
+  "https://prooflocker-1.onrender.com";
 
 /**
  * Core RPC wrapper
