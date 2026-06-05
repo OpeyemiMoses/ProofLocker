@@ -249,7 +249,7 @@ if (updatedCase && updatedCase.manifestBlobId) {
                     <>
                       <div style={{ ...s.resultBlobLabel, marginTop: "6px" }}>Tx Digest</div>
                       <a
-                        href={"https://suiscan.xyz/testnet/tx/" + ev.txDigest}
+                        href={"https://suiscan.xyz/mainnet/tx/" + ev.txDigest}
                         target="_blank"
                         rel="noreferrer"
                         style={{ ...s.resultBlob, color: C.purple, textDecoration: "none" }}

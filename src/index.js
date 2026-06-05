@@ -6,14 +6,15 @@ import { SuiClientProvider, WalletProvider } from "@mysten/dapp-kit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@mysten/dapp-kit/dist/index.css";
 import { Toaster } from "react-hot-toast";
+import { messageWithIntent } from "@mysten/sui/cryptography";
 
 var queryClient = new QueryClient();
-var networks = { testnet: { url: "https://fullnode.testnet.sui.io:443" } };
+var networks = { mainnet: { url: "https://fullnode.mainnet.sui.io:443" } };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <QueryClientProvider client={queryClient}>
-    <SuiClientProvider networks={networks} defaultNetwork="testnet">
+    <SuiClientProvider networks={networks} defaultNetwork="mainnet">
       <WalletProvider autoConnect>
         <App />
         <Toaster
