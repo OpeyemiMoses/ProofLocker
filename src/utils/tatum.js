@@ -1,4 +1,4 @@
-const API = process.env.REACT_APP_API_URL.replace(/\/$/, "");
+const API = (process.env.REACT_APP_API_URL || "http://localhost:3001").replace(/\/$/, "");
 
 export const suiRPC = async (method, params = []) => {
   const response = await fetch(`${API}/api/sui-rpc`, {
@@ -17,6 +17,7 @@ export const suiRPC = async (method, params = []) => {
 
   return data.result;
 };
+
 /**
  * NETWORK STATS
  */
