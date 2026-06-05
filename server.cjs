@@ -27,14 +27,14 @@ app.use(
         return callback(null, true);
       }
 
-      return callback(new Error("CORS blocked: " + origin));
+      
+      return callback(null, false);
     },
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "x-api-key"],
   })
 );
 
-app.use(express.json({ limit: "10mb" }));
 
 app.options("*", cors());
 
