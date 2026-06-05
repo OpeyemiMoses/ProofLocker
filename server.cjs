@@ -11,23 +11,14 @@ const PORT = process.env.PORT || 3001;
 
 /**
  * =========================
- * MAINNET ONLY CONFIG
- * =========================
- */
-const TATUM_URL = "https://sui-mainnet.gateway.tatum.io/";
-
-const API_KEY = process.env.TATUM_MAINNET_API_KEY;
-
-/**
- * =========================
- * BODY PARSER
+ * BODY PARSER (IMPORTANT)
  * =========================
  */
 app.use(express.json({ limit: "10mb" }));
 
 /**
  * =========================
- * CORS CONFIG
+ * CORS CONFIG (CLEAN)
  * =========================
  */
 const allowedOrigins = [
@@ -48,7 +39,7 @@ app.use(
       return callback(null, false);
     },
     methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
+    allowedHeaders: ["Content-Type", "x-api-key"],
   })
 );
 
@@ -58,7 +49,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-
 /**
  * =========================
  * HEALTH CHECK
@@ -68,21 +58,22 @@ app.get("/", (req, res) => {
   res.json({
     status: "ok",
     service: "Sui RPC Proxy",
-    network: "mainnet",
     time: new Date().toISOString(),
   });
 });
 
 /**
  * =========================
- * SUI RPC PROXY (MAINNET)
+ * SUI RPC PROXY (TATUM)
  * =========================
  */
 app.post("/api/sui-rpc", async (req, res) => {
   try {
-    if (!API_KEY) {
+    const apiKey = process.env.TATUM_API_KEY;
+
+    if (!apiKey) {
       return res.status(500).json({
-        error: "Missing TATUM MAINNET API KEY",
+        error: "Missing TATUM_API_KEY",
       });
     }
 
@@ -94,20 +85,24 @@ app.post("/api/sui-rpc", async (req, res) => {
       });
     }
 
-    const response = await fetch(TATUM_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": API_KEY,
-      },
-      body: JSON.stringify({
-        jsonrpc: "2.0",
-        id: 1,
-        method,
-        params,
-      }),
-    });
+    const response = await fetch(
+      "https://sui-testnet.gateway.tatum.io/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": apiKey,
+        },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method,
+          params,
+        }),
+      }
+    );
 
+    // SAFE PARSING (prevents crashes)
     const text = await response.text();
 
     let data;
@@ -115,7 +110,7 @@ app.post("/api/sui-rpc", async (req, res) => {
       data = JSON.parse(text);
     } catch (e) {
       return res.status(500).json({
-        error: "Invalid JSON from Tatum",
+        error: "Invalid JSON response from Tatum",
         raw: text,
       });
     }
@@ -142,6 +137,7 @@ app.post("/api/sui-rpc", async (req, res) => {
  */
 app.post("/api/verify-tx", async (req, res) => {
   try {
+    const apiKey = process.env.TATUM_API_KEY;
     const { digest } = req.body;
 
     if (!digest) {
@@ -150,27 +146,22 @@ app.post("/api/verify-tx", async (req, res) => {
       });
     }
 
-    const response = await fetch(TATUM_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": API_KEY,
-      },
-      body: JSON.stringify({
-        jsonrpc: "2.0",
-        id: 1,
-        method: "sui_getTransactionBlock",
-        params: [
-          digest,
-          {
-            showInput: true,
-            showEffects: true,
-            showEvents: true,
-            showObjectChanges: true,
-          },
-        ],
-      }),
-    });
+    const response = await fetch(
+      "https://sui-testnet.gateway.tatum.io/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": apiKey,
+        },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method: "sui_getTransactionBlock",
+          params: [digest],
+        }),
+      }
+    );
 
     const text = await response.text();
 
@@ -179,7 +170,7 @@ app.post("/api/verify-tx", async (req, res) => {
       data = JSON.parse(text);
     } catch (e) {
       return res.status(500).json({
-        error: "Invalid response",
+        error: "Invalid Tatum response",
         raw: text,
       });
     }
@@ -205,5 +196,4 @@ app.post("/api/verify-tx", async (req, res) => {
  */
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`API server running on port ${PORT}`);
-  console.log(`NETWORK: MAINNET`);
 });
