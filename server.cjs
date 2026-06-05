@@ -20,7 +20,7 @@ app.listen(PORT, "0.0.0.0", () => {
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5173",
-  "https://your-live-frontend.com", // replace this in production
+  "https://proof-locker-main.vercel.app/", 
 ];
 
 app.use(
