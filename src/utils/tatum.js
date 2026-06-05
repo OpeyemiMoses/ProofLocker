@@ -1,16 +1,10 @@
-const API =
-  process.env.REACT_APP_API_URL ||
-  "https://prooflocker-1.onrender.com";
+const API = process.env.REACT_APP_API_URL;
 
-/**
- * Core RPC wrapper
- */
 export const suiRPC = async (method, params = []) => {
   const response = await fetch(`${API}/api/sui-rpc`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
     },
     body: JSON.stringify({ method, params }),
   });
@@ -18,7 +12,7 @@ export const suiRPC = async (method, params = []) => {
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data?.error || "RPC call failed");
+    throw new Error(data?.error || "RPC failed");
   }
 
   return data.result;
