@@ -70,7 +70,7 @@ function TatumStats({ walletAddress, cases }) {
         </div>
         <div style={s.tatumBadge}>
           <div style={s.tatumDot} />
-          Tatum · Sui Mainnet
+          Tatum · Sui Testnet
         </div>
       </div>
 
@@ -122,7 +122,7 @@ function TatumStats({ walletAddress, cases }) {
                   </div>
                 </div>
                 <a
-                  href={"https://suiscan.xyz/mainnet/tx/" + tx.digest}
+                  href={"https://suiscan.xyz/testnet/tx/" + tx.digest}
                   target="_blank"
                   rel="noreferrer"
                   style={s.txLink}
@@ -154,7 +154,7 @@ function TatumStats({ walletAddress, cases }) {
                 </div>
                 {hasDigest && (
                   <a
-                    href={"https://suiscan.xyz/mainnet/tx/" + c.txDigest}
+                    href={"https://suiscan.xyz/testnet/tx/" + c.txDigest}
                     target="_blank"
                     rel="noreferrer"
                     style={s.txLink}
