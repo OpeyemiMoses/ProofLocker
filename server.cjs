@@ -25,6 +25,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5173",
   "https://proof-locker-main.vercel.app",
+  "https://proof-locker.vercel.app",
 ];
 
 app.use(
