@@ -32,11 +32,11 @@ function CaseTimeline({ caseData, onVerify }) {
   }
 
   function walrusUrl(blobId) {
-    return "https://aggregator.walrus.space/v1/blobs/" + blobId;
+    return "https://aggregator.walrus-testnet.walrus.space/v1/blobs/" + blobId;
   }
 
   function walrusscanUrl(blobId) {
-    return "https://walruscan.com/mainnet/blob/" + blobId;
+    return "https://walruscan.com/testnet/blob/" + blobId;
   }
 
   function suiscanUrl(digest) {
