@@ -330,9 +330,9 @@ function App() {
         <div style={sb.logoRow}>
           {!collapsed && (
             <div style={sb.logo} onClick={goToLanding}>
-              <div style={sb.logoMark}>
-                <span style={{ ...gradText, fontSize: "12px", fontWeight: 800, fontFamily: "'Space Grotesk', sans-serif" }}>PL</span>
-              </div>
+             <div style={sb.logoMark}>
+  <img src="/public/images/proof.png" alt="ProofLocker" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
+</div>
               <div style={sb.logoName}>ProofLocker</div>
             </div>
           )}
