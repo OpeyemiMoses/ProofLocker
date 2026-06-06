@@ -331,7 +331,7 @@ function App() {
           {!collapsed && (
             <div style={sb.logo} onClick={goToLanding}>
              <div style={sb.logoMark}>
-  <img src="/public/images/proof.png" alt="ProofLocker" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
+  <img src="images/proof.png" alt="ProofLocker" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
 </div>
               <div style={sb.logoName}>ProofLocker</div>
             </div>
