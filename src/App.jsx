@@ -47,7 +47,7 @@ function LandingPage({ onEnter }) {
       <nav style={{ ...lp.nav, padding: mobile ? "0 20px" : "0 64px" }}>
         <div style={lp.navLogo}>
           <div style={lp.navLogoMark}>
-            <span style={{ ...gradText, fontSize: "12px", fontWeight: 800, fontFamily: "'Space Grotesk', sans-serif" }}>PL</span>
+            <img src="images/proof.png" alt="ProofLocker" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
           </div>
           <span style={lp.navLogoText}>ProofLocker</span>
         </div>
