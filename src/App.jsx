@@ -166,8 +166,7 @@ function LandingPage({ onEnter }) {
       <footer style={{ ...lp.footer, padding: mobile ? "24px 20px" : "32px 64px", flexDirection: mobile ? "column" : "row", gap: mobile ? "12px" : "0", textAlign: mobile ? "center" : "left" }}>
         <div style={lp.navLogo}>
           <div style={lp.navLogoMark}>
-            <span style={{ ...gradText, fontSize: "12px", fontWeight: 800, fontFamily: "'Space Grotesk', sans-serif" }}>PL</span>
-          </div>
+  <img src="/public/images/proof.png" alt="ProofLocker" style={{ width: "24px", height: "24px", objectFit: "contain" }} /></div>
           <span style={lp.navLogoText}>ProofLocker</span>
         </div>
         <div style={{ fontSize: "12px", color: C.textMuted }}>
@@ -331,7 +330,7 @@ function App() {
           {!collapsed && (
             <div style={sb.logo} onClick={goToLanding}>
              <div style={sb.logoMark}>
-  <img src="images/proof.png" alt="ProofLocker" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
+  <img src="/public/images/proof.png" alt="ProofLocker" style={{ width: "24px", height: "24px", objectFit: "contain" }} />
 </div>
               <div style={sb.logoName}>ProofLocker</div>
             </div>
