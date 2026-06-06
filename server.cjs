@@ -86,7 +86,7 @@ app.post("/api/sui-rpc", async (req, res) => {
     }
 
     const response = await fetch(
-      "https://sui-testnet.gateway.tatum.io/",
+      "https://sui-mainnet.tatum.io/",
       {
         method: "POST",
         headers: {
@@ -147,7 +147,7 @@ app.post("/api/verify-tx", async (req, res) => {
     }
 
     const response = await fetch(
-      "https://sui-testnet.gateway.tatum.io/",
+      "https://sui-mainnet.tatum.io/",
       {
         method: "POST",
         headers: {
