@@ -501,7 +501,7 @@ function App() {
             { label: "Total Cases", value: cases.length },
             { label: "Open Cases", value: cases.filter(function(c){ return c.status === "open"; }).length },
             { label: "Evidence Files", value: cases.reduce(function(s,c){ return s + c.files.length; }, 0) },
-            { label: "Network", value: "Sui Testnet" },
+            { label: "Network", value: "Sui Mainnet" },
           ].map(function (stat, i) {
             return (
               <div key={i} style={ui.statCard}>
