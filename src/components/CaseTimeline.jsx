@@ -32,15 +32,15 @@ function CaseTimeline({ caseData, onVerify }) {
   }
 
   function walrusUrl(blobId) {
-    return "https://aggregator.walrus-testnet.walrus.space/v1/blobs/" + blobId;
+    return "https://aggregator.walrus.space/v1/blobs/" + blobId;
   }
 
   function walrusscanUrl(blobId) {
-    return "https://walruscan.com/testnet/blob/" + blobId;
+    return "https://walruscan.com/mainnet/blob/" + blobId;
   }
 
   function suiscanUrl(digest) {
-    return "https://suiscan.xyz/testnet/tx/" + digest;
+    return "https://suiscan.xyz/mainnet/tx/" + digest;
   }
 
   return (
@@ -187,7 +187,7 @@ function CaseTimeline({ caseData, onVerify }) {
                                     {file.txDigest && (
                                       <a
                 
-                  href={"https://suiscan.xyz/testnet/tx/" + file.txDigest}
+                  href={"https://suiscan.xyz/mainnet/tx/" + file.txDigest}
                   target="_blank"
                   rel="noreferrer"
                   style={{ ...s.link, color: "#00D395" }}

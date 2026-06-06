@@ -1,5 +1,5 @@
-const WALRUS_PUBLISHER = "https://publisher.walrus-testnet.walrus.space";
-const WALRUS_AGGREGATOR = "https://aggregator.walrus-testnet.walrus.space";
+const WALRUS_PUBLISHER = "https://publisher.walrus.space";
+const WALRUS_AGGREGATOR = "https://aggregator.walrus.space";
 
 // Upload a file to Walrus, returns blob ID
 export const uploadToWalrus = async (file) => {
